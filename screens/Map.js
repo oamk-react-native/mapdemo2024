@@ -1,24 +1,10 @@
 import { StyleSheet, SafeAreaView, Platform } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import MapView from 'react-native-maps'
-import Constants from 'expo-constants'
 
 
-export default function Map() {
-  const [location, setLocation] = useState({
-    latitude: 65.0800,
-    longitude: 25.4800,
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421
-  })
-
- /*  useEffect(() => {
-    (async() => {
-      getUserPosition()
-    })()
-  }, []) */
+export default function Map({location}) {
   
-
   return (
     <SafeAreaView style={styles.container}>
       <MapView 

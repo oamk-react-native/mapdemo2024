@@ -18,6 +18,12 @@ const icons = {
 
 export default function App() {
   const [icon, setIcon] = useState(icons.location_not_know)
+  const [location, setLocation] = useState({
+    latitude: 65.0800,
+    longitude: 25.4800,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421
+  })
 
   const getUserPosition = async () => {
     setIcon(icons.location_searching)
@@ -31,6 +37,7 @@ export default function App() {
 
       const position = await Location.getCurrentPositionAsync({accuracy: Location.Accuracy.High})
       setLocation({...location,"latitude":position.coords.latitude,"longitude":position.coords.longitude})
+      setIcon(icons.location_found)
     } catch (error) {
       console.log(error)
     }
@@ -40,11 +47,11 @@ export default function App() {
     <PaperProvider>
       <MainAppbar 
         title="Map"
-        backGroundColor={settings.backGround}
+        backgroundColor={settings.backGround}
         icon={icon}
         getUserPosition={getUserPosition}
       />
-      <Map />
+      <Map location={location}/>
     </PaperProvider>
   );
 }

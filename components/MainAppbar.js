@@ -1,4 +1,3 @@
-import { View, Text } from 'react-native'
 import { Appbar } from 'react-native-paper';
 import React from 'react'
 
