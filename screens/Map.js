@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import MapView, { Marker } from 'react-native-maps'
 
 
-export default function Map({location}) {
+export default function Map({location,mapType}) {
   const [marker, setMarker] = useState(null)
 
   const showMarker = (e) => {
@@ -16,7 +16,7 @@ export default function Map({location}) {
       <MapView 
         style={styles.map}
         region={location}
-        mapType='satellite'
+        mapType={mapType}
         onLongPress={showMarker}
       >
         {
